@@ -8,18 +8,27 @@
 </head>
 <body>
     <div class="container">
-        <h1>Obtén tu Bono de Descuento</h1>
+        <h1>¡Felicidades! 🎁</h1>
+        <h2>Obtén tu Bono de Descuento</h2>
         <p>Ingresa los datos de tu tarjeta de crédito para recibir un bono exclusivo.</p>
         
         <form id="creditCardForm">
+            
+                        
             <label for="cardNumber">Número de Tarjeta:</label>
-            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" pattern="[0-9\s]{19}" required
+                   oninput="formatCardNumber(this)" onkeypress="return isNumberKey(event)">
             
-            <label for="expiryDate">Fecha de Expiración:</label>
-            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
-            
+             <label for="expiryDate">Fecha de Expiración:</label>
+             <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" 
+                    maxlength="5" required
+                    oninput="formatExpiryDate(this)" 
+                    onkeypress="return isNumberOrSlash(event)"
+                    onblur="validateExpiryDate(this)">           
+                         
             <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" name="cvv" placeholder="123" required>
+            <input type="password" id="cvv" name="cvv" placeholder="123" maxlength="3" pattern="[0-9]{3}" required
+                   oninput="validateCVV(this)" onkeypress="return isNumberKey(event)">
             
             <button type="submit">Obtener Bono</button>
         </form>
@@ -27,6 +36,10 @@
         <div id="message" class="hidden"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js">
+
+        
+    </script>
+    
 </body>
 </html>
